@@ -29,9 +29,16 @@ describe('Thermostat', function() {
     thermostat.powersavingMode(true)
     expect(function() { thermostat.up(28) }).toThrow('PSM on. Cannot go above 25.')
   });
-  
+
   it('cannot go above 32 if powersaving mode is off', function() {
     thermostat.powersavingMode(false)
     expect(function() { thermostat.up(33) }).toThrow('Cannot go above 32.')
   });
+
+  it('can reset to 20 with reset function', function() {
+    thermostat.up(24);
+    thermostat.reset()
+    expect(thermostat.temperature).toEqual(20)
+  });
+
 });
