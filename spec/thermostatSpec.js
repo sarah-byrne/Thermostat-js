@@ -55,4 +55,19 @@ describe('Thermostat', function() {
     thermostat.up(25);
     expect(thermostat.energyUsage()).toEqual(Symbol.for('high'));
   });
+
+  it('if up button is pressed temp goes up by 1 degree', function() {
+    thermostat.upButton();
+    thermostat.upButton();
+    expect(thermostat.temperature).toEqual(22);
+  });
+
+  it('if up button is pressed temp goes up by 1 degree', function() {
+    thermostat.downButton();
+    thermostat.downButton();
+    expect(thermostat.temperature).toEqual(18);
+  });
+
+
+
 });
