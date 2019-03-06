@@ -20,4 +20,7 @@ describe('Thermostat', function() {
     expect(thermostat.temperature).toEqual(12);
   });
 
+  it('does not allow the temperature to be taken down below 10 degrees', function() {
+    expect(function() { thermostat.down(9) }).toThrow("cannot go below 10 degrees")
+  });
 });
