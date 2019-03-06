@@ -5,6 +5,14 @@ function Thermostat(){
   this.psmOn = true;
 }
 
+Thermostat.prototype.upButton = function() {
+  this.up(this.temperature + 1);
+}
+
+Thermostat.prototype.downButton = function() {
+  this.up(this.temperature - 1);
+}
+
 Thermostat.prototype.up = function(newTemperature) {
   if (newTemperature > 25 && this.psm === true) {
     throw('PSM on. Cannot go above 25.')
