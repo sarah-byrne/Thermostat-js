@@ -22,5 +22,12 @@ describe('Thermostat', function() {
 
   it('does not allow the temperature to be taken down below 10 degrees', function() {
     expect(function() { thermostat.down(9) }).toThrow("cannot go below 10 degrees")
+    expect(thermostat.temperature).toEqual(20)
   });
+
+  it('cannot go above 25 if powersaving mode is on', function() {
+    thermostat.powersavingMode('ON')
+    expect(function() { thermostat.up(28) }).toThrow('PSM on. Cannot go above 25.')  
+  });
+
 });
