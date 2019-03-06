@@ -2,7 +2,7 @@
 
 function Thermostat(){
   this.temperature = 20;
-  this.psmOn = true;
+  this.psm = true;
 }
 
 Thermostat.prototype.upButton = function() {
@@ -14,9 +14,9 @@ Thermostat.prototype.downButton = function() {
 }
 
 Thermostat.prototype.up = function(newTemperature) {
-  if (newTemperature > 25 && this.psm === true) {
+  if (newTemperature > 25 && this.psm) {
     throw('PSM on. Cannot go above 25.')
-  } else if (newTemperature > 32 && this.psm === false) {
+  } else if (newTemperature > 32 && !this.psm) {
     throw('Cannot go above 32.')
   }
   this.temperature = newTemperature;
@@ -29,8 +29,8 @@ Thermostat.prototype.down = function(newTemperature) {
   this.temperature = newTemperature;
 }
 
-Thermostat.prototype.powersavingMode = function(bool) {
-  this.psm = bool;
+Thermostat.prototype.changePowersavingMode = function() {
+  this.psm = !this.psm;
 }
 
 Thermostat.prototype.reset = function() {
