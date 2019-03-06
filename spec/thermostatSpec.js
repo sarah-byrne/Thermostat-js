@@ -41,4 +41,18 @@ describe('Thermostat', function() {
     expect(thermostat.temperature).toEqual(20)
   });
 
+  it('has low energy usage if temperature is < 18', function() {
+    thermostat.down(17);
+    expect(thermostat.energyUsage).toEqual(Symbol('low'));
+  });
+
+  it('has medium energy usage if temperature is < 25', function() {
+    thermostat.up(24);
+    expect(thermostat.energyUsage).toEqual(Symbol('med'));
+  });
+
+  it('has high energy usage if temperature is >= 25', function() {
+    thermostat.up(25);
+    expect(thermostat.energyUsage).toEqual(Symbol('high'));
+  });
 });

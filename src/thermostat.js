@@ -22,3 +22,7 @@ Thermostat.prototype.down = function(newTemperature) {
 Thermostat.prototype.powersavingMode = function(bool) {
   this.psm = bool;
 }
+
+Thermostat.prototype.reset = function() {
+  this.temperature = 20;
+}
